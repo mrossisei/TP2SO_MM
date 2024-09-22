@@ -12,15 +12,8 @@
 #include <string.h>
 
 #define MAX_BLOCKS 20
-
 #define BLOCK_SIZE 10
 #define BLOCK_COUNT 10
-
-typedef struct MM_rq
-{
-    void *address;
-    uint32_t size;
-} mm_rq;
 
 void *start;
 int size;
@@ -40,8 +33,12 @@ void my_mm_init(void *p, int s)
     current = 0;
 }
 
-void *my_malloc()
+void *my_malloc(int size)
 {
+    if (size > BLOCK_SIZE || current >= BLOCK_COUNT)
+    {
+        return NULL;
+    }
     return free_ptrs[current++];
 }
 
