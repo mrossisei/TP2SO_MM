@@ -1,22 +1,17 @@
 #!/bin/bash
 
-# Compilar el archivo mm.c
-gcc mm.c test_mm.c syscall.c test_util.c -o mm
+# Function to clean up
+cleanup() {
+    echo "Limpiando archivos generados..."
+    make clean
+    echo "Proceso completado."
+}
 
-# Verificar si la compilación fue exitosa
-if [ $? -eq 0 ]; then
-    echo "Compilación exitosa. Ejecutando el programa..."
-    # Ejecutar el programa
-    /Users/matias/Desktop/TP2SO_MM/mm
-else
-    echo "Error en la compilación."
-    exit 1
-fi
+trap cleanup SIGINT
 
-# Limpiar los archivos generados
-echo "Limpiando archivos generados..."
-rm mm
+chmod +x run.sh
+make all
+echo "Compilación exitosa. Ejecutando el programa..."
+./test_mm
 
-echo "Proceso completado."
-# Instrucción para correr el script desde la terminal
-# echo "bash /Users/matias/Desktop/TP2SO_MM/run.sh"
+cleanup

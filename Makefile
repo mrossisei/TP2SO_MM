@@ -1,5 +1,5 @@
 # Nombre del ejecutable
-EXEC = nombre_programa
+EXEC = test_mm
 
 # Archivos fuente
 SRC = mm.c test_mm.c syscall.c test_util.c

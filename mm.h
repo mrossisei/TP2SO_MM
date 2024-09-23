@@ -9,9 +9,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define BLOCK_SIZE 100
-#define BLOCK_COUNT 100
-#define MEM_SIZE_STR "10000"
+#define BLOCK_SIZE 1024
+#define BLOCK_COUNT 1024
+#define MEM_SIZE_STR "1048576"
 
 void my_mm_init(void *p, int s);
 

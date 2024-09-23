@@ -10,7 +10,7 @@ uint64_t test_mm(uint64_t argc, char *argv[])
 {
 
     mm_rq mm_rqs[MAX_BLOCKS];
-    uint8_t rq;
+    uint64_t rq;
     uint32_t total;
     uint64_t max_memory;
 
