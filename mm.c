@@ -1,24 +1,9 @@
-// No alinear
-// No gestionar fragmentación
-// No pide tamaño de bloque
-
-// Si liberar memoria
-#include <stdlib.h>
-// #include "test_mm.h"
-// #include "syscall.h"
-// #include "test_util.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-#define MAX_BLOCKS 20
-#define BLOCK_SIZE 10
-#define BLOCK_COUNT 10
+#include "mm.h"
 
 void *start;
 int size;
 int current;
-void *free_ptrs[BLOCK_COUNT]; // [10, 20, 30, 40, 50] --> [20, 30, 40, 50] --> [30, 40, 50]
+void *free_ptrs[BLOCK_COUNT];
 
 void my_mm_init(void *p, int s)
 {
@@ -28,8 +13,8 @@ void my_mm_init(void *p, int s)
     for (int i = 0; i < BLOCK_COUNT; i++)
     {
         free_ptrs[i] = start + i * BLOCK_SIZE;
+        printf("free_ptrs[%d] = %p\n", i, free_ptrs[i]);
     }
-
     current = 0;
 }
 
@@ -49,5 +34,10 @@ void my_free(void *p)
 
 int main()
 {
+    char mem[BLOCK_COUNT * BLOCK_SIZE];
+    my_mm_init((void *)mem, BLOCK_COUNT * BLOCK_SIZE);
+    printf("Corriendo test_mm...\nCortar con Ctrl+C\n");
+    test_mm(1, (char *[]){MEM_SIZE_STR});
+
     return 0;
 }
