@@ -13,7 +13,6 @@ void my_mm_init(void *p, int s)
     for (int i = 0; i < BLOCK_COUNT; i++)
     {
         free_ptrs[i] = start + i * BLOCK_SIZE;
-        printf("free_ptrs[%d] = %p\n", i, free_ptrs[i]);
     }
     current = 0;
 }
