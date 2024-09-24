@@ -35,7 +35,7 @@ int main()
 {
     char mem[BLOCK_COUNT * BLOCK_SIZE];
     my_mm_init((void *)mem, BLOCK_COUNT * BLOCK_SIZE);
-    printf("Corriendo test_mm...\nCortar con Ctrl+C\n");
+    printf("Corriendo el test...\nCortar con Ctrl+C\n");
     test_mm(1, (char *[]){MEM_SIZE_STR});
 
     return 0;

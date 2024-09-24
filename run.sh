@@ -11,7 +11,7 @@ trap cleanup SIGINT
 
 chmod +x run.sh
 make all
-echo "Compilación exitosa. Ejecutando el programa..."
+echo "Compilación exitosa."
 ./test_mm
 
 cleanup
