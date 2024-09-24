@@ -2,7 +2,7 @@
 
 # Function to clean up
 cleanup() {
-    echo "Limpiando archivos generados..."
+    echo -e "\nLimpiando archivos generados..."
     make clean
     echo "Proceso completado."
 }
@@ -14,4 +14,3 @@ make all
 echo "Compilación exitosa."
 ./test_mm
 
-cleanup
