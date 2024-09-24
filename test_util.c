@@ -2,24 +2,24 @@
 #include <stdio.h>
 #include "syscall.h"
 
-// Random
+// random
 static uint32_t m_z = 362436069;
 static uint32_t m_w = 521288629;
 
-uint32_t GetUint()
+uint32_t get_uint()
 {
 	m_z = 36969 * ( m_z & 65535 ) + ( m_z >> 16 );
 	m_w = 18000 * ( m_w & 65535 ) + ( m_w >> 16 );
 	return ( m_z << 16 ) + m_w;
 }
 
-uint32_t GetUniform ( uint32_t max )
+uint32_t get_uniform ( uint32_t max )
 {
-	uint32_t u = GetUint();
+	uint32_t u = get_uint();
 	return ( u + 1.0 ) * 2.328306435454494e-10 * max;
 }
 
-// Memory
+// memory
 uint8_t memcheck ( void *start, uint8_t value, uint32_t size )
 {
 	uint8_t *p = ( uint8_t * ) start;
@@ -32,7 +32,7 @@ uint8_t memcheck ( void *start, uint8_t value, uint32_t size )
 	return 1;
 }
 
-// Parameters
+// parameters
 int64_t satoi ( char *str )
 {
 	uint64_t i = 0;
@@ -56,7 +56,7 @@ int64_t satoi ( char *str )
 	return res * sign;
 }
 
-// Dummies
+// dummies
 void bussy_wait ( uint64_t n )
 {
 	uint64_t i;
@@ -75,7 +75,7 @@ void endless_loop_print ( uint64_t wait )
 	int64_t pid = my_getpid();
 
 	while ( 1 ) {
-		printf ( "%lld ", pid );
+		printf ( "%ld ", pid );
 		bussy_wait ( wait );
 	}
 }
